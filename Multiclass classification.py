@@ -1,13 +1,15 @@
 # coding: utf-8
 
+# In[41]:
+
+
 from keras.datasets import reuters
 import numpy as np
 from keras import layers, models
 import matplotlib.pyplot as plt
 
-
 (train_data, train_labels), (test_data, test_labels) = reuters.load_data(
-    num_words=10000)
+    num_words=10000)  # ограничеваем данные 10000 наиболее часто встречающимися словами
 
 
 # Data coding
@@ -39,7 +41,7 @@ model.add(layers.Dense(64, activation='relu', input_shape=(10000,)))
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(46, activation='softmax'))
 
-# Function loss
+# Fucntion loss
 model.compile(optimizer='rmsprop',
               loss='categorical_crossentropy',
               metrics=['accuracy'])
@@ -58,7 +60,7 @@ history = model.fit(partial_x_train,
                     batch_size=512,
                     validation_data=(x_val, y_val))
 
-# loss graph
+# loss grapgh
 loss = history.history['loss']
 val_loss = history.history['val_loss']
 
@@ -91,13 +93,13 @@ plt.legend()
 
 plt.show()
 
-# neural network re - teaching
+# neutal network re - teaching
 model = models.Sequential()
 model.add(layers.Dense(64, activation='relu', input_shape=(10000,)))
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(46, activation='softmax'))
 
-# Function loss
+# Fucntion loss
 model.compile(optimizer='rmsprop',
               loss='categorical_crossentropy',
               metrics=['accuracy'])

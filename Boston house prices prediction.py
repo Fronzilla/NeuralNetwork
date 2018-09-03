@@ -54,7 +54,6 @@ model = build_model()
 model.fit(partial_train_data, partial_train_targets,
           epochs=num_epochs, batch_size=1, verbose=0
           )
-
 # validation
 val_mse, val_mae = model.evaluate(val_data, val_targets, verbose=0)
 all_scores.append(val_mae)
@@ -87,6 +86,7 @@ all_mae_history.append(mae_history)
 average_mae_history = [
     np.mean([x[i] for x in all_mae_history]) for i in range(num_epochs)
 ]
+
 # graph with scores validations
 plt.plot(range(1, len(average_mae_history) + 1), average_mae_history)
 plt.xlabel('Epohcs')
@@ -95,6 +95,7 @@ plt.show()
 
 
 # graph with scores validations except first 10
+
 def smooth_curve(points, factor=0.9):
     smoothed_points = []
     for i in points:
@@ -108,10 +109,14 @@ def smooth_curve(points, factor=0.9):
 
 smooth_mae_history = smooth_curve(average_mae_history[10:])
 
+# In[22]:
+
+
 plt.plot(range(1, len(smooth_mae_history) + 1), smooth_mae_history)
 plt.xlabel("Epochs")
 plt.ylabel("Validation MAE")
 plt.show()
+
 
 # final network teaching
 model = build_model()
