@@ -88,7 +88,7 @@ for step in range(iterations):
 
     stop = start + batch_size
     real_image = x_train[start: stop]
-    combined_images = np.concatenate([generated_image, real_images])
+    combined_images = np.concatenate([generated_image, real_image])
 
     labels = np.concatenate([np.ones((batch_size, 1)),
                              np.zeros((batch_size, 1))])

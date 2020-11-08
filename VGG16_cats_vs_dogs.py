@@ -8,9 +8,6 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras import layers, models, optimizers
 import matplotlib.pyplot as plt
 
-#
-
-
 conv_base = VGG16(weights='imagenet',
                   include_top=False)
 
